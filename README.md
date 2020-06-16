@@ -2,6 +2,7 @@
 
 Jezyki i paradygmaty programowania - zaliczenie cwiczen
 
-##Zadania
+## Zadania
 
 Zadanie 1 - zawiera konsolowy konwerter jednostek
+
