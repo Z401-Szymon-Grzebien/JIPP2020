@@ -1,4 +1,7 @@
 # JIPP2020
 
-Zadanie 1 - zawiera konsolowy konwerter jednostek \n
-Zadanie 2 - in progress
+Jezyki i paradygmaty programowania - zaliczenie cwiczen
+
+##Zadania
+
+Zadanie 1 - zawiera konsolowy konwerter jednostek
