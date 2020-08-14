@@ -5,7 +5,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using DBModule;
-
+using System.Security.AccessControl;
+using System.Windows.Input;
+using System.Data.Entity.Infrastructure;
+using System.Threading;
+using System.ComponentModel;
 
 namespace UnitConverter
 {
@@ -19,27 +23,26 @@ namespace UnitConverter
         SQLQueries q;
         DateTime date;
 
+
+
+
         public MainWindow()
         {
             InitializeComponent();
+
             Zegar.Visibility = Visibility.Hidden;
             ConverterComboBox.ItemsSource = new List<IConvert>
             {
                 new ConverterLogic.LengthConverter(),
-                new TempratureConverter(),
-                new MassConverter(),
-                new ClockConverter(),
-                new EnergyConverter()
+                new ConverterLogic.TempratureConverter(),
+                new ConverterLogic.MassConverter(),
+                new ConverterLogic.ClockConverter(),
+                new ConverterLogic.EnergyConverter()
             };
             q = new SQLQueries();
-            DBGrid.ItemsSource = q.GetData();
-            RateControl.RateValueChanged += RateControl_RateValueChanged;
+            RateControl.RateValue = q.load_rating();
         }
 
-        private void RateControl_RateValueChanged(int value)
-        {
-            throw new NotImplementedException();
-        }
 
         private void ConverterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -120,7 +123,8 @@ namespace UnitConverter
                 from = DateTime.Parse(FromTextBox.Text);
                 to = DateTime.Parse(ToTextBox.Text);
                 DBGrid.ItemsSource = q.SortFromToDate(from, to);
-            }else if(FromTextBox == null && ToTextBox == null)
+            }
+            else if (FromTextBox == null && ToTextBox == null)
             {
                 DBGrid.ItemsSource = q.SortByConverter(ConverterTextBox.Text);
             }
@@ -129,5 +133,30 @@ namespace UnitConverter
                 DBGrid.ItemsSource = q.SortByConverter(ConverterTextBox.Text);
             }
         }
+
+        private void RateControl_RateValueChanged(object sender, MyControls.RatedEventArgs e )
+        {
+            q = new SQLQueries();
+            q.save_rating(RateControl.RateValue);
+        }
+
+        private void LoadDB_Click(object sender, RoutedEventArgs e)
+        {
+            Thread thread = new Thread(() => load_db());
+            thread.Start();
+        }
+
+        void load_db()
+        {
+            q = new SQLQueries();
+            for(int i = 0; i < 100; i++)
+            {
+                Dispatcher.Invoke(()=>pbStatus.Value++);
+                Thread.Sleep(100);
+            }
+
+            Dispatcher.Invoke(()=> DBGrid.ItemsSource = q.GetData());
+        }
     }
+
 }

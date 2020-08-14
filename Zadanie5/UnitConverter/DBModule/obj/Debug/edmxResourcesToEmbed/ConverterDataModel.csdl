@@ -14,5 +14,13 @@
   </EntityType>
   <EntityContainer Name="ConverterDataEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Converter_Saves" EntityType="Self.Converter_Saves" />
+    <EntitySet Name="Ratings" EntityType="ConverterDataModel.Rating" />
   </EntityContainer>
+  <EntityType Name="Rating">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rating1" Type="Int32" />
+  </EntityType>
 </Schema>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
@@ -80,7 +82,40 @@ namespace DBModule
                 context.Converter_Saves.Add(newSave);
                 context.SaveChanges();
             }
-
         }
+
+        public void save_rating(int? Rating)
+        {
+            int previous_id = 0;
+            using (ConverterDataEntities context = new ConverterDataEntities())
+            {
+                previous_id = context.Ratings
+                    .Count();
+
+                var previous_rating = context.Ratings.First(c => c.id >= 0);
+                context.Ratings.Remove(previous_rating);
+                context.SaveChanges();
+
+                Rating newSave = new Rating()
+                {
+                    Rating1 = Rating
+                };
+                context.Ratings.Add(newSave);
+                context.SaveChanges();
+            }
+            
+        }
+
+        public int? load_rating()
+        {
+            int? rating = 0;
+            using (ConverterDataEntities context = new ConverterDataEntities())
+            {
+                var vRating = context.Ratings.OrderByDescending(u => u.Rating1).Select(u => u.Rating1).FirstOrDefault();
+                rating = vRating;
+            }
+            return rating;
+        }
+        
     }
 }

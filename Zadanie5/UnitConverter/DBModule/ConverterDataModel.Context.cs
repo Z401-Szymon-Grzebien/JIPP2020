@@ -26,5 +26,6 @@ namespace DBModule
         }
     
         public virtual DbSet<Converter_Saves> Converter_Saves { get; set; }
+        public virtual DbSet<Rating> Ratings { get; set; }
     }
 }

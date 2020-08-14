@@ -23,23 +23,19 @@ namespace MyControls
         public RatingControl()
         {
             InitializeComponent();
-            this.DataContext = this;
         }
 
-        public delegate void RateDelegate(int value);
+        public event EventHandler<RatedEventArgs> RateValueChanged;
 
-        public event RateDelegate RateValueChanged;
+        private int? _ratevalue = 0;
 
-        private int _ratevalue = 0;
-
-        public int RateValue { 
-            get => _ratevalue; 
-            set 
-            { 
-                _ratevalue = value; 
+        public int? RateValue { 
+            get => _ratevalue;
+            set
+            {
+                _ratevalue = value;
                 UpdateButtons();
-                if(RateValueChanged != null)
-                    RateValueChanged(_ratevalue);
+                RateValueChanged?.Invoke(this, new RatedEventArgs() { Value = _ratevalue });
             } 
         }
 
@@ -51,10 +47,11 @@ namespace MyControls
             }
             if (_ratevalue > 0)
             {
-                for (int i = 0; i < _ratevalue - 1; i++)
+                for (int i = 0; i <= _ratevalue - 1; ++i)
                 {
                     ((Button)ratesGrid.Children[i]).Background = new SolidColorBrush(Colors.Blue);
                 }
+
             }
         }
 
@@ -62,5 +59,10 @@ namespace MyControls
         {
             RateValue = ratesGrid.Children.IndexOf((Button)sender) + 1;
         }
+    }
+
+    public class RatedEventArgs: EventArgs
+    {
+        public int? Value { get; set; }
     }
 }

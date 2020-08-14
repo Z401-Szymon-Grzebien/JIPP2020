@@ -12,7 +12,15 @@
     <Property Name="ConvertedValue" Type="varchar" MaxLength="50" />
     <Property Name="DateTime" Type="datetime" />
   </EntityType>
+  <EntityType Name="Ratings">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rating" Type="int" />
+  </EntityType>
   <EntityContainer Name="ConverterDataModelStoreContainer">
     <EntitySet Name="Converter_Saves" EntityType="Self.Converter_Saves" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ratings" EntityType="Self.Ratings" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>
