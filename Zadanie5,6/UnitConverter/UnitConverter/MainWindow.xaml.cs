@@ -23,9 +23,6 @@ namespace UnitConverter
         SQLQueries q;
         DateTime date;
 
-
-
-
         public MainWindow()
         {
             InitializeComponent();

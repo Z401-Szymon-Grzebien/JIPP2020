@@ -47,7 +47,7 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
 
-                <Button x:Name="button" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource ConvertButton}" Content="{StaticResource FontConvertIcon}" Command="{Binding Path=ConvertCommand}" Height="50" RenderTransformOrigin="0.5,0.5">
+                <Button x:Name="button" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource ConvertButton}" Content="{StaticResource FontConvertIcon}" Click="Button_Click" Height="50" RenderTransformOrigin="0.5,0.5">
                     <Button.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>

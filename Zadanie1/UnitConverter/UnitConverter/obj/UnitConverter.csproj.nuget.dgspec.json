@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\silve\\Desktop\\JIPP2020\\Zadanie 1\\UnitConverter\\UnitConverter\\UnitConverter.csproj": {}
+    "C:\\Users\\silve\\Desktop\\JIPP2020\\Zadanie1\\UnitConverter\\UnitConverter\\UnitConverter.csproj": {}
   },
   "projects": {
-    "C:\\Users\\silve\\Desktop\\JIPP2020\\Zadanie 1\\UnitConverter\\UnitConverter\\UnitConverter.csproj": {
+    "C:\\Users\\silve\\Desktop\\JIPP2020\\Zadanie1\\UnitConverter\\UnitConverter\\UnitConverter.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\silve\\Desktop\\JIPP2020\\Zadanie 1\\UnitConverter\\UnitConverter\\UnitConverter.csproj",
+        "projectUniqueName": "C:\\Users\\silve\\Desktop\\JIPP2020\\Zadanie1\\UnitConverter\\UnitConverter\\UnitConverter.csproj",
         "projectName": "UnitConverter",
-        "projectPath": "C:\\Users\\silve\\Desktop\\JIPP2020\\Zadanie 1\\UnitConverter\\UnitConverter\\UnitConverter.csproj",
+        "projectPath": "C:\\Users\\silve\\Desktop\\JIPP2020\\Zadanie1\\UnitConverter\\UnitConverter\\UnitConverter.csproj",
         "packagesPath": "C:\\Users\\silve\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\silve\\Desktop\\JIPP2020\\Zadanie 1\\UnitConverter\\UnitConverter\\obj\\",
+        "outputPath": "C:\\Users\\silve\\Desktop\\JIPP2020\\Zadanie1\\UnitConverter\\UnitConverter\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\silve\\AppData\\Roaming\\NuGet\\NuGet.Config",
