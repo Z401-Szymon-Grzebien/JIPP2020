@@ -108,20 +108,23 @@ namespace UnitConverter
         private void SortClick(object sender, RoutedEventArgs e)
         {
             q = new SQLQueries();
+            DateTime from, to;
 
             if (ConverterTextBox == null)
             {
-                DateTime from, to;
                 from = DateTime.Parse(FromTextBox.Text);
                 to = DateTime.Parse(ToTextBox.Text);
                 DBGrid.ItemsSource = q.SortFromToDate(from, to);
-            }else if(FromTextBox == null && ToTextBox == null)
+            }
+            else if (FromTextBox == null && ToTextBox == null)
             {
                 DBGrid.ItemsSource = q.SortByConverter(ConverterTextBox.Text);
             }
-            else
+            else if (FromTextBox != null && ToTextBox != null && ConverterTextBox != null)
             {
-                DBGrid.ItemsSource = q.SortByConverter(ConverterTextBox.Text);
+                from = DateTime.Parse(FromTextBox.Text);
+                to = DateTime.Parse(ToTextBox.Text);
+                DBGrid.ItemsSource = q.GetTop3ResultsOfConverter(from, to, ConverterTextBox.Text);
             }
         }
     }
