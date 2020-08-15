@@ -145,13 +145,15 @@ namespace UnitConverter
 
         void load_db()
         {
+            Dispatcher.Invoke(()=> pbStatus.Visibility = Visibility.Visible);
             q = new SQLQueries();
             for(int i = 0; i < 100; i++)
             {
                 Dispatcher.Invoke(()=>pbStatus.Value++);
+                
                 Thread.Sleep(100);
             }
-
+            Dispatcher.Invoke(() => pbStatus.Visibility = Visibility.Hidden);
             Dispatcher.Invoke(()=> DBGrid.ItemsSource = q.GetData());
         }
     }
